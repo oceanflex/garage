@@ -12,16 +12,17 @@ package garage;
 public class MinNoMaxFeeCalc implements FeeCalcStrategy{
     private double feeMin = 1.5;
     private double feeHourly = 0.75;
+    private double hoursBase = 2;
 
     @Override
     public double getFee(double hoursParked) {
-        double feeActual = feeHourly * hoursParked;
-        double out;
-        if(feeActual < feeMin){
-            out = feeMin;
-        }else{
-            out = feeActual;
-        }
+        if(hoursParked < hoursBase){
+            hoursParked = hoursBase;
+        }//this is error handling, it makes sure I don't multiply by negative
+        double feeActual = feeHourly * (hoursParked - hoursBase);
+        //if hoursParked are less than hoursBase, feeActual will be 0
+        double out = feeActual + feeMin;
+        //feeMin = 0+feeMin, or feeMin = feeActual + feeMin
         return out;
     }
     
