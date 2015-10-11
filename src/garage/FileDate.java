@@ -18,12 +18,12 @@ public class FileDate {
     private final DateFormat timeFormat = new SimpleDateFormat("hh:mm");
     private Date date;
     private String today;
-    private String now;
+    private String time;
         
-    public String nowIs(){
+    public String timeIs(){
         date = new Date();
-        now = timeFormat.format(date);
-        return now;
+        time = timeFormat.format(date);
+        return time;
     }
     
     public String todayIs(){

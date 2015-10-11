@@ -15,6 +15,6 @@ public class Startup {
     public static void main(String[] args) {
         FileDate now = new FileDate();
         System.out.println(now.todayIs());
-        System.out.println(now.nowIs());
+        System.out.println(now.timeIs());
     }
 }
