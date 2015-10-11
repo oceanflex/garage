@@ -10,10 +10,22 @@ package garage;
  * @author Zachary
  */
 public class MinMaxFeeCalc implements FeeCalcStrategy{
+    private double feeMin = 2;
+    private double feeMax = 10;
+    private double feeHourly = 0.5;
+    private double hoursBase = 3;
 
     @Override
     public double getFee(double hoursParked) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if(hoursParked < hoursBase){
+            hoursParked = hoursBase;
+        }
+        double feeActual = feeHourly * (hoursParked - hoursBase);
+        double out = feeActual + feeMin;
+        if(feeActual > feeMax){
+            out = feeMax;
+        }
+        return out;
     }
     
 }
