@@ -16,8 +16,11 @@ public class Startup {
 //        FileDate now = new FileDate();
 //        System.out.println(now.todayIs());
 //        System.out.println(now.timeIs());
-        OwnerOutStrategy own = new OwnerTotalFile();
-        own.update(2, 3.5);
-        own.update(1, 2.5);
+        
+//        OwnerOutStrategy own = new OwnerTotalFile();
+//        own.update(2, 3.5);
+//        own.update(1, 2.5);
+        CustOutStrategy cust = new CustConsoleReceipt();
+        cust.output(101, 2, 4.5);
     }
 }
