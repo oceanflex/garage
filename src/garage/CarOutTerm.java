@@ -10,5 +10,9 @@ package garage;
  * @author Zachary
  */
 public class CarOutTerm {
+    private OwnerOutStrategy own;
+    private CustOutStrategy cust;
+    private FeeCalcStrategy feeCalc;
+    
     
 }

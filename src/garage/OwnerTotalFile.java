@@ -24,18 +24,19 @@ public class OwnerTotalFile implements OwnerOutStrategy{
     private FileDate now = new FileDate();
     private PrintWriter writer;
 
-    public void addHours(double Hours) {
-        this.rtHours += Hours;
+    private void addHours(double hours) {
+        this.rtHours += hours;
     }
 
-    public void addMoney(double Money) {
-        this.rtMoney += Money;
+    private void addMoney(double money) {
+        this.rtMoney += money;
     }
     
     
 
     @Override
     public void update(double HoursParked, double MoneyCollected) {
+        //needs validation
         this.addHours(HoursParked);
         this.addMoney(MoneyCollected);
         try {

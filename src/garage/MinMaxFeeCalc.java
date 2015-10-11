@@ -17,6 +17,7 @@ public class MinMaxFeeCalc implements FeeCalcStrategy{
 
     @Override
     public double getFee(double hoursParked) {
+        //hoursParked is validated in checkMin
         hoursParked = this.checkAndRound(hoursParked);
         double feeActual = feeHourly * (hoursParked - hoursBase);
         double out = feeActual + feeMin;

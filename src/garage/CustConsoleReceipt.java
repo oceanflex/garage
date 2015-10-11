@@ -18,6 +18,7 @@ public class CustConsoleReceipt implements CustOutStrategy{
     
     @Override
     public void output(int carId, double hoursParked, double moneyCharged) {
+        //needs validation
         
         System.out.println("Thank you for parking at "+GARAGE_NAME+
                 ", your ID was "+carId+".\nYou parked for "+hoursParked+" hours,"+
