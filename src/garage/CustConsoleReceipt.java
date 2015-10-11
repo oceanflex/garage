@@ -14,12 +14,15 @@ import java.text.NumberFormat;
 public class CustConsoleReceipt implements CustOutStrategy{
     private static final String GARAGE_NAME = "Best Value Parking Garage";
     private final NumberFormat money = NumberFormat.getCurrencyInstance();
+    private FileDate now = new FileDate();
+    
     @Override
     public void output(int carId, double hoursParked, double moneyCharged) {
         
         System.out.println("Thank you for parking at "+GARAGE_NAME+
                 ", your ID was "+carId+".\nYou parked for "+hoursParked+" hours,"+
-                " and your total was to "+money.format(moneyCharged));
+                " starting at " +now.timeIs()+" on "+now.todayIs()+
+                ", and your total was to "+money.format(moneyCharged));
     }
     
 }
