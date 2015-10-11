@@ -13,6 +13,17 @@ public class CarOutTerm {
     private OwnerOutStrategy own;
     private CustOutStrategy cust;
     private FeeCalcStrategy feeCalc;
+    private double fee;
+
+    public CarOutTerm(OwnerOutStrategy own, CustOutStrategy cust, FeeCalcStrategy feeCalc) {
+        this.own = own;
+        this.cust = cust;
+        this.feeCalc = feeCalc;
+    }
     
-    
+    public void releaseCar(double hoursParked, int carId){
+        fee = feeCalc.getFee(hoursParked);
+        own.update(hoursParked, fee);
+        cust.output(carId, hoursParked, fee);
+    }
 }
