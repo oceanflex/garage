@@ -16,17 +16,34 @@ public class MinNoMaxFeeCalc implements FeeCalcStrategy{
 
     @Override
     public double getFee(double hoursParked) {
-        if(hoursParked < hoursBase){
-            hoursParked = hoursBase;
-        }//this is error handling, it makes sure I don't multiply by negative
-        if(hoursParked > ((int)hoursParked * 1.0)){
-            hoursParked = (int)hoursParked + 1;
-        }//this ensures that any part of an hour counts as an hour.
+        hoursParked = this.checkAndRound(hoursParked);
         double feeActual = feeHourly * (hoursParked - hoursBase);
         //if hoursParked are less than hoursBase, feeActual will be 0
         double out = feeActual + feeMin;
         //feeMin = 0+feeMin, or feeMin = feeActual + feeMin
         return out;
+    }
+    
+    private double checkAndRound(double hours){
+        double temp = this.checkMin(hours);
+        double out = this.roundUp(temp);
+        return out;
+    }
+    
+    private double checkMin(double toCheck){
+        double checked = toCheck;
+        if(toCheck < hoursBase){
+            checked = hoursBase;
+        }//this is error handling, it makes sure I don't multiply by negative
+        return checked;
+    }
+    
+    private double roundUp(double toRound){
+        double rounded = toRound;
+        if(toRound > ((int)toRound * 1.0)){
+            rounded = (int)toRound + 1;
+        }//this ensures that any part of an hour counts as an hour.
+        return rounded;
     }
     
 }
