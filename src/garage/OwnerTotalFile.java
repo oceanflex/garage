@@ -38,7 +38,7 @@ public class OwnerTotalFile implements OwnerOutStrategy{
         this.addMoney(MoneyCollected);
         String today = now.todayIs();
         try {
-            writer = new PrintWriter(("Totals.txt"));
+            writer = new PrintWriter((today+" Totals.txt"));
             writer.println(GARAGE_NAME+" Hours Charged: "+rtHours+" Money Collected: "+rtMoney);
             writer.close();
         } catch (FileNotFoundException ex) {

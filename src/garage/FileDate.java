@@ -14,7 +14,7 @@ import java.util.Date;
  * @author Zachary
  */
 public class FileDate {
-    private final DateFormat dateFormat = new SimpleDateFormat("yy/MM/dd");
+    private final DateFormat dateFormat = new SimpleDateFormat("yy.MM.dd");
     private final DateFormat timeFormat = new SimpleDateFormat("hh:mm");
     private Date date;
     private String today;
