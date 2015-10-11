@@ -19,6 +19,9 @@ public class MinNoMaxFeeCalc implements FeeCalcStrategy{
         if(hoursParked < hoursBase){
             hoursParked = hoursBase;
         }//this is error handling, it makes sure I don't multiply by negative
+        if(hoursParked > ((int)hoursParked * 1.0)){
+            hoursParked = (int)hoursParked + 1;
+        }//this ensures that any part of an hour counts as an hour.
         double feeActual = feeHourly * (hoursParked - hoursBase);
         //if hoursParked are less than hoursBase, feeActual will be 0
         double out = feeActual + feeMin;

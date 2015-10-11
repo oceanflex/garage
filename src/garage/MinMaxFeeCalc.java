@@ -20,6 +20,9 @@ public class MinMaxFeeCalc implements FeeCalcStrategy{
         if(hoursParked < hoursBase){
             hoursParked = hoursBase;
         }
+        if(hoursParked > ((int)hoursParked * 1.0)){
+            hoursParked = (int)hoursParked + 1;
+        }
         double feeActual = feeHourly * (hoursParked - hoursBase);
         double out = feeActual + feeMin;
         if(feeActual > feeMax){
