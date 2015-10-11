@@ -24,7 +24,9 @@ public class Startup {
 //        CustOutStrategy cust = new CustConsoleReceipt();
 //        cust.output(101, 2, 4.5);
         
-        FeeCalcStrategy fee = new MinNoMaxFeeCalc();
-        System.out.println(fee.getFee(3.1));
+//        FeeCalcStrategy fee = new MinNoMaxFeeCalc();
+//        System.out.println(fee.getFee(3.1));
+        
+        
     }
 }
