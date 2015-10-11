@@ -18,6 +18,6 @@ public class Startup {
 //        System.out.println(now.timeIs());
         OwnerOutStrategy own = new OwnerTotalFile();
         own.update(2, 3.5);
-        //own.update(1, 2.5);
+        own.update(1, 2.5);
     }
 }
