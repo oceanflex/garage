@@ -13,12 +13,14 @@ public class CarOutTerm {
     private OwnerOutStrategy own;
     private CustOutStrategy cust;
     private FeeCalcStrategy feeCalc;
+    private ParkingLot lot;
     private double fee;
 
-    public CarOutTerm(OwnerOutStrategy own, CustOutStrategy cust, FeeCalcStrategy feeCalc) {
+    public CarOutTerm(ParkingLot lot, OwnerOutStrategy own, CustOutStrategy cust, FeeCalcStrategy feeCalc) {
         this.own = own;
         this.cust = cust;
         this.feeCalc = feeCalc;
+        this.lot = lot;
     }
     
     public void releaseCar(double hoursParked, int carId){

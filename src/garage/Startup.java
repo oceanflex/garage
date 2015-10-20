@@ -29,7 +29,7 @@ public class Startup {
         FeeCalcStrategy fee = new MinMaxFeeCalc();
 //        System.out.println(fee.getFee(3.1));
         
-        CarOutTerm outTerm = new CarOutTerm(own,cust,fee);
+        CarOutTerm outTerm = new CarOutTerm(lot,own,cust,fee);
         outTerm.releaseCar(2, 101);
         outTerm.releaseCar(5, 102);
         outTerm.releaseCar(4, 103);
