@@ -16,6 +16,8 @@ public class Startup {
 //        FileDate now = new FileDate();
 //        System.out.println(now.todayIs());
 //        System.out.println(now.timeIs());
+        ParkingLot lot = new ParkingLot();
+        CarInTerm inTerm = new CarInTerm(lot);
         
         OwnerOutStrategy own = new OwnerTotalFile();
 //        own.update(2, 3.5);
