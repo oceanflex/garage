@@ -59,11 +59,11 @@ public class CarInTerm {
         return backDate;
     }
     
-    public static void main(String[] args) {
-        ParkingLot lot = new ParkingLot();
-        CarInTerm in = new CarInTerm(lot);
-        System.out.println(in.backDate(10.22));
-        Date date = new Date();
-        System.out.println(date);
-    }
+//    public static void main(String[] args) {
+//        ParkingLot lot = new ParkingLot();
+//        CarInTerm in = new CarInTerm(lot);
+//        System.out.println(in.backDate(10.22));
+//        Date date = new Date();
+//        System.out.println(date);
+//    }
 }
