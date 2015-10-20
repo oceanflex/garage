@@ -33,8 +33,10 @@ public class CarOutTerm {
     
     public void checkHoursParked(int carId){
         FileDate fd = new FileDate();
-        Date timeIn = lot.timeIn(carId);
-        Date timeOut = new Date();
-        
+        String timeIn = fd.dayOf(lot.timeIn(carId)) +" "+ fd.timeOf(lot.timeIn(carId));
+        String timeOut = fd.todayIs() +" "+fd.timeIs();
+        if(timeIn.substring(0,7)==timeOut.substring(0,7)){
+            System.out.println(timeOut.substring(0,7));
+        }
     }
 }
