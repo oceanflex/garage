@@ -5,6 +5,8 @@
  */
 package garage;
 
+import java.util.Date;
+
 /**
  *
  * @author Zachary
@@ -27,5 +29,12 @@ public class CarOutTerm {
         fee = feeCalc.getFee(hoursParked);
         own.update(hoursParked, fee);
         cust.output(carId, hoursParked, fee);
+    }
+    
+    public void checkHoursParked(int carId){
+        FileDate fd = new FileDate();
+        Date timeIn = lot.timeIn(carId);
+        Date timeOut = new Date();
+        
     }
 }

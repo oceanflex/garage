@@ -17,7 +17,7 @@ public class FileDate {
     private final DateFormat dateFormat = new SimpleDateFormat("yy.MM.dd");
     private final DateFormat timeFormat = new SimpleDateFormat("hh:mm");
     private Date date;
-    private String today;
+    private String day;
     private String time;
         
     public String timeIs(){
@@ -26,10 +26,20 @@ public class FileDate {
         return time;
     }
     
+    public String timeOf(Date date){
+        time = timeFormat.format(date);
+        return time;
+    }
+    
+    public String dayOf(Date date){
+        day = dateFormat.format(date);
+        return day;
+    }
+    
     public String todayIs(){
         date = new Date();
-        today = dateFormat.format(date);
-        return today;
+        day = dateFormat.format(date);
+        return day;
     }
         
 }
