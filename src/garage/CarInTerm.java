@@ -12,9 +12,9 @@ import java.util.Date;
  */
 public class CarInTerm {
     private int carId = 1000;
-    private ParkingLot lot;
+    private final CarDataAccess lot;
     
-    public CarInTerm(ParkingLot lot){
+    public CarInTerm(CarDataAccess lot){
         this.lot = lot;
     }
     

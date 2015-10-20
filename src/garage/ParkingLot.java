@@ -11,7 +11,7 @@ import java.util.Date;
  *
  * @author Zachary
  */
-public class ParkingLot {
+public class ParkingLot implements CarDataAccess{
     private Car[] cars = {};
     
     private void addCar(Car c){
@@ -21,12 +21,14 @@ public class ParkingLot {
         cars = temp;
     }
     
+    @Override
     public void addCar(int carId, Date timeIn){
         Car c = new Car(carId,timeIn);
         this.addCar(c);
     }
     
-    public Date timeIn(int carId){
+    @Override
+    public Date getTimeIn(int carId){
         Date time = null;
         for(Car c: this.cars){
             if(carId == c.getCarId()){

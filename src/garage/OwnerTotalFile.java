@@ -21,7 +21,6 @@ public class OwnerTotalFile implements OwnerOutStrategy{
     private final NumberFormat money = NumberFormat.getCurrencyInstance();
     private double rtHours;
     private double rtMoney;
-    private FileDate now = new FileDate();
     private PrintWriter writer;
 
     private void addHours(double hours) {
@@ -40,7 +39,7 @@ public class OwnerTotalFile implements OwnerOutStrategy{
         this.addHours(HoursParked);
         this.addMoney(MoneyCollected);
         try {
-            writer = new PrintWriter((now.todayIs()+" Totals.txt"));
+            writer = new PrintWriter((FileDate.todayIs()+" Totals.txt"));
             writer.println(GARAGE_NAME+" daily totals\n Hours Charged: "+rtHours+
                     " Money Collected: "+money.format(rtMoney));
             writer.close();

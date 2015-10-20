@@ -30,11 +30,12 @@ public class Startup {
 //        System.out.println(fee.getFee(3.1));
         
         CarOutTerm outTerm = new CarOutTerm(lot,own,cust,fee);
-        inTerm.newCar(0.25);
+        //inTerm.newCar(); //will make a new car entry with starting time of now
+        inTerm.newCar(0.25);//will make a new entry with starting time of 15 minutes ago
         inTerm.newCar(3.1);
-        inTerm.newCar(6);
+        inTerm.newCar(6);//make new entry with starting time 6 hours ago
         inTerm.newCar(14);
-        outTerm.releaseCar(1001);
+        outTerm.releaseCar(1001);//will release the first car
         outTerm.releaseCar(1002);
         outTerm.releaseCar(1004);
         outTerm.releaseCar(1003);

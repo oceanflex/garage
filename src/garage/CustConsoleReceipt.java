@@ -14,9 +14,8 @@ import java.text.NumberFormat;
  */
 public class CustConsoleReceipt implements CustOutStrategy{
     private static final String GARAGE_NAME = "Best Value Parking Garage";
-    private final NumberFormat money = NumberFormat.getCurrencyInstance();
-    private final NumberFormat hours = new DecimalFormat("#00.00");
-    private FileDate now = new FileDate();
+    private static final NumberFormat money = NumberFormat.getCurrencyInstance();
+    private static final NumberFormat hours = new DecimalFormat("#00.00");
     
     @Override
     public void output(int carId, double hoursParked, double moneyCharged) {

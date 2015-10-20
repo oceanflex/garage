@@ -14,29 +14,29 @@ import java.util.Date;
  * @author Zachary
  */
 public class FileDate {
-    private final DateFormat dateFormat = new SimpleDateFormat("yy.MM.dd");
-    private final DateFormat timeFormat = new SimpleDateFormat("HH:mm");
-    private Date date;
-    private String day;
-    private String time;
+    private static final DateFormat dateFormat = new SimpleDateFormat("yy.MM.dd");
+    private static final DateFormat timeFormat = new SimpleDateFormat("HH:mm");
+    private static Date date;
+    private static String day;
+    private static String time;
         
-    public String timeIs(){
+    public static String timeIs(){
         date = new Date();
         time = timeFormat.format(date);
         return time;
     }
     
-    public String timeOf(Date date){
+    public static String timeOf(Date date){
         time = timeFormat.format(date);
         return time;
     }
     
-    public String dayOf(Date date){
+    public static String dayOf(Date date){
         day = dateFormat.format(date);
         return day;
     }
     
-    public String todayIs(){
+    public static String todayIs(){
         date = new Date();
         day = dateFormat.format(date);
         return day;

@@ -16,17 +16,16 @@ import java.util.Date;
  */
 public class BackDate {
     private static final int MINUTES_PER_HOUR = 60;
+    private static final NumberFormat hours = new DecimalFormat("#00");
+    private static final NumberFormat minutes = new DecimalFormat("#0.00");
     
     /**
      * This is the only method in this utility class
      * @param hoursPreParked input the number of hours previous to now you want the date to be
      * @return 
      */
-    public static Date hoursAgo(double hoursPreParked){
+    public static final Date hoursAgo(double hoursPreParked){
         Date backDate;
-        
-        NumberFormat hours = new DecimalFormat("#00");
-        NumberFormat minutes = new DecimalFormat("#0.00");
         
         int temp = Integer.parseInt(hours.format(hoursPreParked));
         Calendar cal = Calendar.getInstance();

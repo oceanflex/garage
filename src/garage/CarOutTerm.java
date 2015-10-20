@@ -13,13 +13,13 @@ import java.text.NumberFormat;
  * @author Zachary
  */
 public class CarOutTerm {
-    private OwnerOutStrategy own;
-    private CustOutStrategy cust;
-    private FeeCalcStrategy feeCalc;
-    private ParkingLot lot;
+    private final OwnerOutStrategy own;
+    private final CustOutStrategy cust;
+    private final FeeCalcStrategy feeCalc;
+    private final CarDataAccess lot;
     private double fee;
 
-    public CarOutTerm(ParkingLot lot, OwnerOutStrategy own, CustOutStrategy cust, FeeCalcStrategy feeCalc) {
+    public CarOutTerm(CarDataAccess lot, OwnerOutStrategy own, CustOutStrategy cust, FeeCalcStrategy feeCalc) {
         this.own = own;
         this.cust = cust;
         this.feeCalc = feeCalc;
@@ -42,7 +42,7 @@ public class CarOutTerm {
     
     private double checkHoursParked(int carId){
         FileDate fd = new FileDate();
-        String timeIn = fd.dayOf(lot.timeIn(carId)) +" "+ fd.timeOf(lot.timeIn(carId));
+        String timeIn = fd.dayOf(lot.getTimeIn(carId)) +" "+ fd.timeOf(lot.getTimeIn(carId));
         String timeOut = fd.todayIs() +" "+fd.timeIs();
         double hoursParked;
         if(this.isSameDay(timeIn, timeOut)){
