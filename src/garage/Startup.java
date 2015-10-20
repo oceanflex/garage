@@ -30,13 +30,15 @@ public class Startup {
 //        System.out.println(fee.getFee(3.1));
         
         CarOutTerm outTerm = new CarOutTerm(lot,own,cust,fee);
-//        outTerm.releaseCar(2, 101);
-//        outTerm.releaseCar(5, 102);
-//        outTerm.releaseCar(4, 103);
-//        outTerm.releaseCar(3, 104);
-//        outTerm.releaseCar(1, 105);
         inTerm.newCar();
-        
+        inTerm.newCar();
+        inTerm.newCar();
+        inTerm.newCar();
+        outTerm.releaseCar(2.5, 1001);
+        outTerm.releaseCar(5.18, 1002);
+        outTerm.releaseCar(4.24, 1004);
+        outTerm.releaseCar(3.91, 1003);
+//        outTerm.releaseCar(1, 105);
 //        System.out.println(lot.highCarId());
     }
 }

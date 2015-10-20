@@ -28,7 +28,8 @@ public class CarOutTerm {
     }
     
     public void releaseCar(double hoursParked, int carId){
-        //needs validation, carId needs to be >1000, hoursParked can't be >24
+        //needs validation, carId needs to be >1000, hoursParked can't be >24. I want to make this private for "real" runs,
+        //but I can't run the program in under an hour without adding more dumb test methods, or using this one publicly
         fee = feeCalc.getFee(hoursParked);
         own.update(hoursParked, fee);
         cust.output(carId, hoursParked, fee);
@@ -37,9 +38,7 @@ public class CarOutTerm {
     public void releaseCar(int carId){
         //needs validation, carId needs to be >1000, and preferably exist
         double hoursParked = this.checkHoursParked(carId);
-        fee = feeCalc.getFee(hoursParked);
-        own.update(hoursParked, fee);
-        cust.output(carId, hoursParked, fee);
+        this.releaseCar(hoursParked, carId);
     }
     
     private double checkHoursParked(int carId){
