@@ -22,10 +22,11 @@ public class CustConsoleReceipt implements CustOutStrategy{
     public void output(int carId, double hoursParked, double moneyCharged) {
         //needs validation
         
-        System.out.println("Thank you for parking at "+GARAGE_NAME+
-                ", your ID was "+carId+".\nYou parked for "+hours.format(hoursParked)+" hours,"+
-                " starting at " +now.timeIs()+" on "+now.todayIs()+
-                ", and your total was to "+money.format(moneyCharged));
+        System.out.println("\n\nThank you for parking at "+GARAGE_NAME+
+                ",\nyour ID was "+carId+".\nYou parked for "
+                +hours.format(hoursParked)+" hours,\nstarting at " +
+                BackDate.hoursAgo(hoursParked)+",\nand your total was to "+
+                money.format(moneyCharged)+"\n\n");
     }
     
 }
