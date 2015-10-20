@@ -17,7 +17,7 @@ public class ParkingLot {
     private void addCar(Car c){
         Car[] temp = new Car[cars.length+1];
         System.arraycopy(cars, 0, temp, 0, cars.length);
-        temp[temp.length] = c;
+        temp[temp.length-1] = c;
         cars = temp;
     }
     
