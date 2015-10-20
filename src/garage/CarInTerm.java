@@ -51,8 +51,8 @@ public class CarInTerm {
         
         String mins = (minutes.format(hoursPreParked)).substring(1);
         temp = (int)(Double.parseDouble(mins)*60);
-        System.out.println(mins);
-        System.out.println(temp);
+        //System.out.println(mins);
+        //System.out.println(temp);
         cal.add(Calendar.MINUTE, -temp);
         
         backDate = cal.getTime();

@@ -26,9 +26,9 @@ public class CarOutTerm {
         this.lot = lot;
     }
     
-    public void releaseCar(double hoursParked, int carId){
-        //needs validation, carId needs to be >1000, hoursParked can't be >24. I want to make this private for "real" runs,
-        //but I can't run the program in under an hour without adding more dumb test methods, or using this one publicly
+    private void releaseCar(double hoursParked, int carId){
+        //needs validation(if public), carId needs to be >1000, hoursParked can't be >24.
+        //for demos, you could change to public, because of the backdating newCar method in CarInTerm
         fee = feeCalc.getFee(hoursParked);
         own.update(hoursParked, fee);
         cust.output(carId, hoursParked, fee);
