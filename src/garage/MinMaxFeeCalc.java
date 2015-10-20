@@ -18,7 +18,7 @@ public class MinMaxFeeCalc implements FeeCalcStrategy{
     @Override
     public double getFee(double hoursParked) {
         //hoursParked is validated in checkMin
-        hoursParked = this.checkAndRound(hoursParked);
+        hoursParked = FeeCalcUtil.checkAndRound(hoursParked,hoursBase);
         double feeActual = feeHourly * (hoursParked - hoursBase);
         double out = feeActual + feeMin;
         if(feeActual > feeMax){
@@ -27,24 +27,8 @@ public class MinMaxFeeCalc implements FeeCalcStrategy{
         return out;
     }
     private double checkAndRound(double hours){
-        double temp = this.checkMin(hours);
-        double out = this.roundUp(temp);
+        double temp = FeeCalcUtil.checkMin(hours,hoursBase);
+        double out = FeeCalcUtil.roundUp(temp);
         return out;
-    }
-    
-    private double checkMin(double toCheck){
-        double checked = toCheck;
-        if(toCheck < hoursBase){
-            checked = hoursBase;
-        }//this is error handling, it makes sure I don't multiply by negative
-        return checked;
-    }
-    
-    private double roundUp(double toRound){
-        double rounded = toRound;
-        if(toRound > ((int)toRound * 1.0)){
-            rounded = (int)toRound + 1;
-        }//this ensures that any part of an hour counts as an hour.
-        return rounded;
     }
 }

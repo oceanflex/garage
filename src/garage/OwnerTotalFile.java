@@ -18,7 +18,7 @@ import java.text.NumberFormat;
 public class OwnerTotalFile implements OwnerOutStrategy{
     //rt is running total
     private static final String GARAGE_NAME = "Best Value Parking Garage";
-    private final NumberFormat money = NumberFormat.getCurrencyInstance();
+    private static final NumberFormat money = NumberFormat.getCurrencyInstance();
     private double rtHours;
     private double rtMoney;
     private PrintWriter writer;
