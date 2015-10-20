@@ -13,11 +13,16 @@ import java.util.Date;
  */
 public class CarInTerm {
     private int carId = 1000;
+    private ParkingLot lot;
+    
+    public CarInTerm(ParkingLot lot){
+        this.lot = lot;
+    }
     
     public void newCar(){
         this.carId++;
         int newCarId = this.carId;
         Date time = new Date();
-        
+        lot.addCar(newCarId, time);
     }
 }
