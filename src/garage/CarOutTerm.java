@@ -42,8 +42,7 @@ public class CarOutTerm {
         cust.output(carId, hoursParked, fee);
     }
     
-    public double checkHoursParked(int carId){
-        //needs validation, carId needs to be >1000, and preferably exist
+    private double checkHoursParked(int carId){
         FileDate fd = new FileDate();
         String timeIn = fd.dayOf(lot.timeIn(carId)) +" "+ fd.timeOf(lot.timeIn(carId));
         String timeOut = fd.todayIs() +" "+fd.timeIs();

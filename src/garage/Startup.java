@@ -38,6 +38,5 @@ public class Startup {
         inTerm.newCar();
         
 //        System.out.println(lot.highCarId());
-        System.out.println(outTerm.checkHoursParked(1001));
     }
 }
