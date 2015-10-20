@@ -35,4 +35,13 @@ public class ParkingLot {
         }
         return time;
     }
+    public int highCarId(){
+        int back = 9;
+        for(Car c: this.cars){
+            if(back <= c.getCarId()){
+                back = c.getCarId();
+            }
+        }
+        return back;
+    }
 }

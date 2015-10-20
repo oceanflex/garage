@@ -15,7 +15,7 @@ import java.util.Date;
  */
 public class FileDate {
     private final DateFormat dateFormat = new SimpleDateFormat("yy.MM.dd");
-    private final DateFormat timeFormat = new SimpleDateFormat("hh:mm");
+    private final DateFormat timeFormat = new SimpleDateFormat("HH:mm");
     private Date date;
     private String day;
     private String time;

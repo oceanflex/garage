@@ -5,6 +5,8 @@
  */
 package garage;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.Date;
 
 /**
@@ -26,17 +28,65 @@ public class CarOutTerm {
     }
     
     public void releaseCar(double hoursParked, int carId){
+        //needs validation, carId needs to be >1000, hoursParked can't be >24
         fee = feeCalc.getFee(hoursParked);
         own.update(hoursParked, fee);
         cust.output(carId, hoursParked, fee);
     }
     
-    public void checkHoursParked(int carId){
+    public void releaseCar(int carId){
+        //needs validation, carId needs to be >1000, and preferably exist
+        double hoursParked = this.checkHoursParked(carId);
+        fee = feeCalc.getFee(hoursParked);
+        own.update(hoursParked, fee);
+        cust.output(carId, hoursParked, fee);
+    }
+    
+    public double checkHoursParked(int carId){
+        //needs validation, carId needs to be >1000, and preferably exist
         FileDate fd = new FileDate();
         String timeIn = fd.dayOf(lot.timeIn(carId)) +" "+ fd.timeOf(lot.timeIn(carId));
         String timeOut = fd.todayIs() +" "+fd.timeIs();
-        if(timeIn.substring(0,7)==timeOut.substring(0,7)){
-            System.out.println(timeOut.substring(0,7));
+        double hoursParked;
+        if(this.isSameDay(timeIn, timeOut)){
+            hoursParked = this.hoursFromFileDate(timeOut) - this.hoursFromFileDate(timeIn);
+        }else{//assuming no car parks for >24 hrs. If they park for longer, I need a daysDifFromFileDate method
+            //add a day's hours to timeOut 
+            hoursParked = (this.hoursFromFileDate(timeOut)+24)- this.hoursFromFileDate(timeIn);
         }
+        return hoursParked;
+    }
+    /**
+     * takes two strings and compares them. I'm comparing two dates in identical string format
+     * @param one
+     * @param two
+     * @return 
+     */
+    private boolean isSameDay(String one, String two){
+        boolean back = false;
+        if(one.substring(0,8).equals(two.substring(0,8))){
+            back = true;
+        }
+        
+        return back;
+    }
+    /**
+     * takes one date in the format that checkHoursParked makes, and gets the hours back in a double
+     * @param in
+     * @return 
+     */
+    private double hoursFromFileDate(String in){
+        double back;
+        double minutes = Double.parseDouble(in.substring(12));
+        NumberFormat formatter = new DecimalFormat("#0.00");     
+        //System.out.println(minutes);
+        minutes = (minutes / 60);
+        //System.out.println(minutes);
+        String mins = formatter.format(minutes);
+        //System.out.println(mins);
+        String temp = in.substring(9,11)+""+mins.substring(1);
+        back = Double.parseDouble(temp);
+        
+        return back;
     }
 }
