@@ -12,25 +12,25 @@ import java.util.Date;
  * @author Zachary
  */
 public class ParkingLot implements CarDataAccess{
-    private Car[] cars = {};
+    private Ticket[] tickets = {};
     
-    private void addCar(Car c){
-        Car[] temp = new Car[cars.length+1];
-        System.arraycopy(cars, 0, temp, 0, cars.length);
+    private void addCar(Ticket c){
+        Ticket[] temp = new Ticket[tickets.length+1];
+        System.arraycopy(tickets, 0, temp, 0, tickets.length);
         temp[temp.length-1] = c;
-        cars = temp;
+        tickets = temp;
     }
     
     @Override
     public void addCar(int carId, Date timeIn){
-        Car c = new Car(carId,timeIn);
+        Ticket c = new Ticket(carId,timeIn);
         this.addCar(c);
     }
     
     @Override
     public Date getTimeIn(int carId){
         Date time = null;
-        for(Car c: this.cars){
+        for(Ticket c: this.tickets){
             if(carId == c.getCarId()){
                 time = c.getTimeIn();
             }
@@ -39,7 +39,7 @@ public class ParkingLot implements CarDataAccess{
     }
     public int highCarId(){
         int back = 9;
-        for(Car c: this.cars){
+        for(Ticket c: this.tickets){
             if(back <= c.getCarId()){
                 back = c.getCarId();
             }

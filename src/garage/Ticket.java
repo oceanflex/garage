@@ -11,11 +11,11 @@ import java.util.Date;
  *
  * @author Zachary
  */
-public class Car {
+public class Ticket {
     private final int carId;
     private final Date timeIn;
 
-    public Car(int carId, Date timeIn) {
+    public Ticket(int carId, Date timeIn) {
         //needs validation
         this.carId = carId;
         this.timeIn = timeIn;
