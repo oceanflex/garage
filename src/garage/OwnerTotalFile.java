@@ -12,6 +12,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.text.NumberFormat;
 import fileService.FileService;
+import java.io.File;
 import java.io.IOException;
 import java.util.Map;
 
@@ -57,7 +58,7 @@ public class OwnerTotalFile implements OwnerOutStrategy{
         try {
             startupReadIn();
         } catch (FileNotFoundException ex) {
-            FileService temp = new FileService(new GarageTotalsFormat(),"src\\fileFormat\\GarTotSample.txt");
+            FileService temp = new FileService(new GarageTotalsFormat(),"src"+File.separator+"fileFormat"+File.separator+"GarTotSample.txt");
             service.writeFile(temp.readFile());//need to create a basic file to write if there is no file for FileDate.todayIs();
             startupReadIn();
         }
