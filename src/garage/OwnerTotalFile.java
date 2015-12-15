@@ -8,7 +8,6 @@ package garage;
 import fileFormat.GarageTotalsFormat;
 import fileFormat.GarageTotalsKeys;
 import java.io.FileNotFoundException;
-import java.io.PrintWriter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.text.NumberFormat;
@@ -26,6 +25,7 @@ public class OwnerTotalFile implements OwnerOutStrategy{
     private static final NumberFormat money = NumberFormat.getCurrencyInstance();
     private double rtHours;
     private double rtMoney;
+    private int rtPayed;
     private Map[] file;
     //private PrintWriter writer;
     private FileService service;
@@ -42,11 +42,13 @@ public class OwnerTotalFile implements OwnerOutStrategy{
         file = service.readFile();
         rtMoney = (double) file[0].get(GarageTotalsKeys.MONEY.toString());
         rtHours = (double) file[0].get(GarageTotalsKeys.TIME.toString());
+        rtPayed = (int) file[0].get(GarageTotalsKeys.PAYED.toString());
     }
     
     private void writeUpdate() throws FileNotFoundException{
-        file[0].put(GarageTotalsKeys.MONEY, rtMoney);
-        file[0].put(GarageTotalsKeys.TIME, rtHours);
+        file[0].put(GarageTotalsKeys.MONEY.toString(), rtMoney);
+        file[0].put(GarageTotalsKeys.TIME.toString(), rtHours);
+        file[0].put(GarageTotalsKeys.PAYED.toString(), ++rtPayed);
         service.writeFile(file);
     }
     
