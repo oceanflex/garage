@@ -26,7 +26,8 @@ public class OwnerTotalFile implements OwnerOutStrategy{
     private static final NumberFormat money = NumberFormat.getCurrencyInstance();
     private double rtHours;
     private double rtMoney;
-    private PrintWriter writer;
+    private Map[] file;
+    //private PrintWriter writer;
     private FileService service;
 
     private void addHours(double hours) {
@@ -38,9 +39,15 @@ public class OwnerTotalFile implements OwnerOutStrategy{
     }
 
     private void startupReadIn() throws IOException{
-        Map[] file = service.readFile();
-        rtMoney = (double) file[0].get(GarageTotalsKeys.MONEY);
-        rtHours = (double) file[0].get(GarageTotalsKeys.TIME);
+        file = service.readFile();
+        rtMoney = (double) file[0].get(GarageTotalsKeys.MONEY.toString());
+        rtHours = (double) file[0].get(GarageTotalsKeys.TIME.toString());
+    }
+    
+    private void writeUpdate() throws FileNotFoundException{
+        file[0].put(GarageTotalsKeys.MONEY, rtMoney);
+        file[0].put(GarageTotalsKeys.TIME, rtHours);
+        service.writeFile(file);
     }
     
     public OwnerTotalFile() throws IOException {
@@ -48,7 +55,9 @@ public class OwnerTotalFile implements OwnerOutStrategy{
         try {
             startupReadIn();
         } catch (FileNotFoundException ex) {
-            service.writeFile(service.readFile());//need to create a basic file to write if there is no file for FileDate.todayIs();
+            FileService temp = new FileService(new GarageTotalsFormat(),"src\\fileFormat\\GarTotSample.txt");
+            service.writeFile(temp.readFile());//need to create a basic file to write if there is no file for FileDate.todayIs();
+            startupReadIn();
         }
     }
     
@@ -59,10 +68,14 @@ public class OwnerTotalFile implements OwnerOutStrategy{
         this.addHours(HoursParked);
         this.addMoney(MoneyCollected);
         try {
-            writer = new PrintWriter((FileDate.todayIs()+" Totals.txt"));
-            writer.println(GARAGE_NAME+" daily totals\n Hours Charged: "+rtHours+
-                    " Money Collected: "+money.format(rtMoney));
-            writer.close();
+            writeUpdate();
+//        try {
+//            writer = new PrintWriter((FileDate.todayIs()+" Totals.txt"));
+//            writer.println(GARAGE_NAME+" daily totals\n Hours Charged: "+rtHours+
+//                    " Money Collected: "+money.format(rtMoney));
+//            writer.close();ndException ex) {
+//            Logger.getLogger(OwnerTotalFile.class.getName()).log(Level.SEVERE, null, ex);
+//        }
         } catch (FileNotFoundException ex) {
             Logger.getLogger(OwnerTotalFile.class.getName()).log(Level.SEVERE, null, ex);
         }

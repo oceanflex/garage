@@ -1,0 +1,4 @@
+Hours Parked: 0.0
+Dollars Collected: $0.0
+Vehicles in Lot: 0
+Vehicles that Exited: 0

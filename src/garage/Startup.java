@@ -5,6 +5,10 @@
  */
 package garage;
 
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 
 
 /**
@@ -19,9 +23,14 @@ public class Startup {
         ParkingLot lot = new ParkingLot();
         CarInTerm inTerm = new CarInTerm(lot);
         
-        OwnerOutStrategy own = new OwnerTotalFile();
+        OwnerOutStrategy own = null;
+        try {
+            own = new OwnerTotalFile();
 //        own.update(2, 3.5);
 //        own.update(1, 2.5);
+        } catch (IOException ex) {
+            Logger.getLogger(Startup.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
         CustOutStrategy cust = new CustConsoleReceipt();
 //        cust.output(101, 2, 4.5);
