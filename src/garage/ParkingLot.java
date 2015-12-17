@@ -11,6 +11,10 @@ import java.util.Date;
  */
 public class ParkingLot implements CarDataAccess{
     private ArrayList<Ticket> tickets;
+
+    public ParkingLot() {
+        this.tickets = new ArrayList<>();
+    }
     
     /**
      * This method adds a car to the database with input ID and entry time
@@ -19,9 +23,9 @@ public class ParkingLot implements CarDataAccess{
      */
     @Override
     public void addCar(int carId, Date timeIn)throws IndexOutOfBoundsException{
-        if(carId <= highCarId()){//a new car's ID must be greater than all previous IDs
-            throw new IndexOutOfBoundsException();
-        }
+//        if(carId <= highCarId()){//a new car's ID must be greater than all previous IDs
+//            throw new IndexOutOfBoundsException();
+//        }
         Ticket c = new Ticket(carId,timeIn);
         tickets.add(c);
     }

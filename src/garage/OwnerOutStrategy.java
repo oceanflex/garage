@@ -1,12 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package garage;
 
 /**
- *
+ *OwnerOutputStrategies need to keep track of, and display to the owner, a record
+ * of hours cars parked, as well as money collected by the system. 
  * @author Zachary
  */
 public interface OwnerOutStrategy {

@@ -1,12 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package garage;
 
 /**
- *
+ *This FeeCalcStrategy will insure that any fee calculated will be at least 2, and and most 10
  * @author Zachary
  */
 public class MinMaxFeeCalc implements FeeCalcStrategy{
@@ -14,7 +9,11 @@ public class MinMaxFeeCalc implements FeeCalcStrategy{
     private double feeMax = 10;
     private double feeHourly = 0.5;
     private double hoursBase = 3;
-
+/**
+ * This will return the fee for a car parking input hours
+ * @param hoursParked this will be used to calculate hours for fee to be multiplied against, unless it is too low or high
+ * @return a double that represents the fee due
+ */
     @Override
     public double getFee(double hoursParked) {
         //hoursParked is validated in checkMin

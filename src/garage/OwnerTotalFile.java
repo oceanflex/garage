@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package garage;
 
 import fileFormat.GarageTotalsFormat;
@@ -17,7 +12,10 @@ import java.io.IOException;
 import java.util.Map;
 
 /**
- *
+ * The OwnerTotalFile OutStrategy is a simple way to communicate with a FileService 
+ * to keep records of daily totals of cars, money, and hours processed.
+ * On construction, it will load from today's file any data, or create a blank file
+ * if it doesn't exist yet. 
  * @author Zachary
  */
 public class OwnerTotalFile implements OwnerOutStrategy{

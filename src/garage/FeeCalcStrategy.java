@@ -1,12 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package garage;
 
 /**
- *
+ *A FeeCalcStrategy needs to store a value to be charged per hourParked,
+ * and multiply it by an input double when getFee is called
  * @author Zachary
  */
 public interface FeeCalcStrategy {
