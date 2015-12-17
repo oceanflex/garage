@@ -2,6 +2,13 @@ package garage;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZoneOffset;
+import java.util.Date;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 
 /**
  *This class is a central processor that will ask other classes to interact with users,
@@ -50,16 +57,36 @@ public class CarOutTerm {
     }
     
     private double checkHoursParked(int carId){
-        FileDate fd = new FileDate();
-        String timeIn = fd.dayOf(lot.getTimeIn(carId)) +" "+ fd.timeOf(lot.getTimeIn(carId));
-        String timeOut = fd.todayIs() +" "+fd.timeIs();
+        LocalDateTime dtOut = LocalDateTime.now();
+        LocalDateTime dtIn = LocalDateTime.ofInstant(lot.getTimeIn(carId).toInstant(), ZoneId.systemDefault());
+        
+        
+//        FileDate fd = new FileDate();
+//        String timeIn = fd.dayOf(lot.getTimeIn(carId)) +" "+ fd.timeOf(lot.getTimeIn(carId));
+//        String timeOut = fd.todayIs() +" "+fd.timeIs();
         double hoursParked;
-        if(this.isSameDay(timeIn, timeOut)){
-            hoursParked = this.hoursFromFileDate(timeOut) - this.hoursFromFileDate(timeIn);
-        }else{//assuming no car parks for >24 hrs. If they park for longer, I need a daysDifFromFileDate method
-            //add a day's hours to timeOut 
-            hoursParked = (this.hoursFromFileDate(timeOut)+24)- this.hoursFromFileDate(timeIn);
-        }
+        //if(this.isSameDay(timeIn, timeOut)){
+//        if(dtIn.getDayOfYear() == dtOut.getDayOfYear()){//if one day after in is after out, it's the same day
+//            //hoursParked = this.hoursFromFileDate(timeOut) - this.hoursFromFileDate(timeIn);
+//            hoursParked = this.hoursFromFileDate(this.getStringTime(dtOut)) -
+//                    this.hoursFromFileDate(this.getStringTime(dtIn));
+//        }else{//assuming no car parks for >24 hrs. If they park for longer, I need a daysDifFromFileDate method
+//            //add a day's hours to timeOut 
+//           // hoursParked = (this.hoursFromFileDate(timeOut)+24)- this.hoursFromFileDate(timeIn);
+//           hoursParked = (this.hoursFromFileDate(this.getStringTime(dtOut))) -
+//                    (this.hoursFromFileDate(this.getStringTime(dtIn)));
+////           if(hoursParked < 0 ){
+////               hoursParked += 24;
+////           }
+//        }
+        long minutes = ChronoUnit.MINUTES.between(dtIn, dtOut);
+        long hours = ChronoUnit.HOURS.between(dtIn,dtOut);
+        minutes = minutes % 60;
+        System.out.println(minutes);
+        hoursParked = hours;
+        double min = minutes / 60.0;
+        System.out.println(min);
+        hoursParked += min;
         return hoursParked;
     }
     /**
@@ -82,6 +109,7 @@ public class CarOutTerm {
      * @return 
      */
     private double hoursFromFileDate(String in){
+        System.out.println(in);
         double back;
         double minutes = Double.parseDouble(in.substring(12));
         NumberFormat formatter = new DecimalFormat("#0.00");     
@@ -91,6 +119,7 @@ public class CarOutTerm {
         String mins = formatter.format(minutes);
         //System.out.println(mins);
         String temp = in.substring(9,11)+""+mins.substring(1);
+        System.out.println(temp);
         back = Double.parseDouble(temp);
         
         return back;
