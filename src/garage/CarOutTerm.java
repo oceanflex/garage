@@ -1,15 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package garage;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 
 /**
- *
+ *This class is a central processor that will ask other classes to interact with users,
+ * access and store data for program and owner use, and run calculations.
+ * This terminal is the last point of contact with the system customers will have.
  * @author Zachary
  */
 public class CarOutTerm {
@@ -18,7 +15,15 @@ public class CarOutTerm {
     private final FeeCalcStrategy feeCalc;
     private final CarDataAccess lot;
     private double fee;
-
+/**
+ * The constructor needs a lot of information in order to properly output,
+ * collect, and calculate all of the information. This includes a pointer to the
+ * ticket database, owner and customer outputs, as well as the fee calculator
+ * @param lot - this is the data access strategy to lookup carIds in
+ * @param own - this is the owner's output strategy
+ * @param cust - this is the customers output strategy
+ * @param feeCalc -this is the fee calculator to check fees with
+ */
     public CarOutTerm(CarDataAccess lot, OwnerOutStrategy own, CustOutStrategy cust, FeeCalcStrategy feeCalc) {
         this.own = own;
         this.cust = cust;
@@ -33,7 +38,11 @@ public class CarOutTerm {
         own.update(hoursParked, fee);
         cust.output(carId, hoursParked, fee);
     }
-    
+    /**
+     * this method will output to both the customer and owner, all details about
+     * the transaction, based on the carId's ticket in the database
+     * @param carId input carId to get information to display
+     */
     public void releaseCar(int carId){
         //needs validation, carId needs to be >1000, and preferably exist
         double hoursParked = this.checkHoursParked(carId);

@@ -1,7 +1,8 @@
 package garage;
 
 /**
- *a CustOutStrategy needs to be capable of 
+ *a CustOutStrategy needs to be capable of displaying a carId, the hoursParked 
+ * and moneyCharged to a customer when called
  * @author Zachary
  */
 public interface CustOutStrategy {

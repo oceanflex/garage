@@ -1,23 +1,28 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package garage;
 import java.util.Date;
 
 /**
- *
+ *The CarInTerm is a first point of contact with the system. It will define the
+ * carIds that the program will use, and assign them to tickets per request.
+ * It will also call on the CarDataAccess to record all transactions it preforms
+ * for use by the other classes in the system.
  * @author Zachary
  */
 public class CarInTerm {
     private int carId = 1000;
     private final CarDataAccess lot;
-    
+    /**
+     * The CarInTerm constructor needs access to a data structure to communicate
+     * with the other classes.
+     * @param lot - this is the CarDataAccess that the program should refer to
+     */
     public CarInTerm(CarDataAccess lot){
         this.lot = lot;
     }
-    
+    /**
+     * This is the default use method of the class. When prompted, it will generate
+     * a ticket for the database to store.
+     */
     public void newCar(){
         this.carId++;
         int newCarId = this.carId;

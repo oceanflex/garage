@@ -1,15 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package garage;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 
 /**
- *
+ *This CustOutStrategy will print the input information to the console,
+ * as well as the garage name, all as a polite receipt
  * @author Zachary
  */
 public class CustConsoleReceipt implements CustOutStrategy{
