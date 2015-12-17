@@ -52,7 +52,12 @@ public class OwnerTotalFile implements OwnerOutStrategy{
         file[0].put(GarageTotalsKeys.PAYED.toString(), ++rtPayed);
         service.writeFile(file);
     }
-    
+    /**
+     * The default constructer of a OwnerTotalFile. It will create a FileService to keep a file in the src/yy mm dd Totals.txt path,
+     * using the GarageTotalsFormat to access the data. It will then try to read starting data in from the FileService, in case the
+     * program already processed cars today. Failing that, it will populate itself and the file with default values, found in src/fileFormat/GarToSample.txt
+     * @throws IOException for any other IOException than FileNotFound, we'll let the calling class deal with.
+     */
     public OwnerTotalFile() throws IOException {
         service = new FileService(new GarageTotalsFormat(),(FileDate.todayIs()+" Totals.txt"));
         try {
@@ -65,9 +70,11 @@ public class OwnerTotalFile implements OwnerOutStrategy{
     }
     
     /**
-     * This method is designed to update the program's internal running totals 
-     * @param hoursParked
-     * @param moneyCollected 
+     * This method is designed to update the program's internal running totals for cars processed,
+     * hours they parked, and money the program collected, as well save all of that to a file.
+     * Any call of this method will increase the count of cars processed by one, or decrease it by one if either parameter is 0 or less.
+     * @param hoursParked - will be added to the running total hours of cars parked, then the total will be saved to file.
+     * @param moneyCollected - will be added to the running total of money collected from cars parking, then the total will be saved to file.
      */
     @Override
     public void update(double hoursParked, double moneyCollected) {
