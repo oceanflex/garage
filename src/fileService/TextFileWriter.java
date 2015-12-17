@@ -29,8 +29,11 @@ public class TextFileWriter {
     }
     
     public void writeFile(Map<String, Object>[] toWrite) throws FileNotFoundException{
-        try (PrintWriter writer = new PrintWriter(filePath)) {
+        PrintWriter writer = new PrintWriter(filePath);
+        try {
             writer.print(fmt.encode(toWrite));
+        }finally{
+            writer.close();
         }
         
     }

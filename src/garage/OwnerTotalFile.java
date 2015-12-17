@@ -64,12 +64,20 @@ public class OwnerTotalFile implements OwnerOutStrategy{
         }
     }
     
-    
+    /**
+     * This method is designed to update the program's internal running totals 
+     * @param hoursParked
+     * @param moneyCollected 
+     */
     @Override
-    public void update(double HoursParked, double MoneyCollected) {
-        //needs validation
-        this.addHours(HoursParked);
-        this.addMoney(MoneyCollected);
+    public void update(double hoursParked, double moneyCollected) {
+        //negative numbers and any other exception I can think of should would without issue
+        //and should be a tool a developer is allowed to use, for fixing sync issues, etc
+        if(hoursParked<=0||moneyCollected<=0){//but I will reduce the number of exit transactions if one is negative
+            file[0].put(GarageTotalsKeys.PAYED.toString(), rtPayed - 2);
+        }
+        this.addHours(hoursParked);
+        this.addMoney(moneyCollected);
         try {
             writeUpdate();
 //        try {
@@ -80,6 +88,7 @@ public class OwnerTotalFile implements OwnerOutStrategy{
 //            Logger.getLogger(OwnerTotalFile.class.getName()).log(Level.SEVERE, null, ex);
 //        }
         } catch (FileNotFoundException ex) {
+            //fileNotFound shouldn't be thrown by writing here, the constructor makes the file
             Logger.getLogger(OwnerTotalFile.class.getName()).log(Level.SEVERE, null, ex);
         }
         
