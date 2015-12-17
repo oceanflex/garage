@@ -59,34 +59,16 @@ public class CarOutTerm {
     private double checkHoursParked(int carId){
         LocalDateTime dtOut = LocalDateTime.now();
         LocalDateTime dtIn = LocalDateTime.ofInstant(lot.getTimeIn(carId).toInstant(), ZoneId.systemDefault());
-        
-        
-//        FileDate fd = new FileDate();
-//        String timeIn = fd.dayOf(lot.getTimeIn(carId)) +" "+ fd.timeOf(lot.getTimeIn(carId));
-//        String timeOut = fd.todayIs() +" "+fd.timeIs();
         double hoursParked;
-        //if(this.isSameDay(timeIn, timeOut)){
-//        if(dtIn.getDayOfYear() == dtOut.getDayOfYear()){//if one day after in is after out, it's the same day
-//            //hoursParked = this.hoursFromFileDate(timeOut) - this.hoursFromFileDate(timeIn);
-//            hoursParked = this.hoursFromFileDate(this.getStringTime(dtOut)) -
-//                    this.hoursFromFileDate(this.getStringTime(dtIn));
-//        }else{//assuming no car parks for >24 hrs. If they park for longer, I need a daysDifFromFileDate method
-//            //add a day's hours to timeOut 
-//           // hoursParked = (this.hoursFromFileDate(timeOut)+24)- this.hoursFromFileDate(timeIn);
-//           hoursParked = (this.hoursFromFileDate(this.getStringTime(dtOut))) -
-//                    (this.hoursFromFileDate(this.getStringTime(dtIn)));
-////           if(hoursParked < 0 ){
-////               hoursParked += 24;
-////           }
-//        }
         long minutes = ChronoUnit.MINUTES.between(dtIn, dtOut);
         long hours = ChronoUnit.HOURS.between(dtIn,dtOut);
+        System.out.println(hours);
+        
         minutes = minutes % 60;
-        System.out.println(minutes);
         hoursParked = hours;
         double min = minutes / 60.0;
-        System.out.println(min);
         hoursParked += min;
+        System.out.println(hoursParked);
         return hoursParked;
     }
     /**
