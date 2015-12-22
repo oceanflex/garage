@@ -34,15 +34,18 @@ public class Startup {
 //        System.out.println(fee.getFee(3.1));
         
         CarOutTerm outTerm = new CarOutTerm(lot,own,cust,fee);
-        //inTerm.newCar(); //will make a new car entry with starting time of now
-        inTerm.newCar(0.25);//will make a new entry with starting time of 15 minutes ago
-        inTerm.newCar(3.1);
-        inTerm.newCar(6);//make new entry with starting time 6 hours ago
-        inTerm.newCar(11);
-        outTerm.releaseCar(1001);//will release the first car
-        outTerm.releaseCar(1002);
-        outTerm.releaseCar(1003);
-        outTerm.releaseCar(1004);
+        inTerm.newCar(); //will make a new car entry with starting time of now
+//        inTerm.newCar(0.25);//will make a new entry with starting time of 15 minutes ago
+//        inTerm.newCar(3.1);
+//        inTerm.newCar(6);//make new entry with starting time 6 hours ago
+//        inTerm.newCar(11);
+        inTerm.newCar();
+        inTerm.newCar();
+        inTerm.newCar();
+        outTerm.releaseCar(1001,true);//will release the first car
+        outTerm.releaseCar(1002,true);
+        outTerm.releaseCar(1003,true);
+        outTerm.releaseCar(1004,true);
 //        outTerm.releaseCar(1, 105);
 //        System.out.println(lot.highCarId());
     }

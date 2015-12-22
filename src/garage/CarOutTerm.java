@@ -63,14 +63,36 @@ public class CarOutTerm {
      * the transaction, based on the carId's ticket in the database.
      * this version of releaseCar is for testing only
      * @param carId input carId to get information to display
-     * @param isTest set to true for method to work. 
+     * @param isTest set to true to run testing settings, or false for normal activity
      */
     public void releaseCar(int carId,boolean isTest){
         //needs validation, carId needs to be >1000, and preferably exist
-        if(isTest && carId >= 1000 && carId <= lot.highCarId()){
-            double hoursParked = this.checkHoursParked(carId);
-            this.releaseCar(hoursParked, carId);
+        if(carId >= 1000 && carId <= lot.highCarId()){
+            if(isTest){
+                double hoursParked = this.calcHoursParked(carId);
+                this.releaseCar(hoursParked, carId);
+            }else{
+                double hoursParked = this.checkHoursParked(carId);
+                this.releaseCar(hoursParked, carId);
+            }
         }
+    }
+    
+     private double calcHoursParked(int carId){
+        LocalDateTime dtOut = LocalDateTime.now();
+        LocalDateTime dtIn = LocalDateTime.ofInstant(lot.getTimeIn(carId).toInstant(), ZoneId.systemDefault());
+        double hoursParked;
+        long minutes = ChronoUnit.MICROS.between(dtIn, dtOut);
+        long hours = ChronoUnit.MILLIS.between(dtIn,dtOut);
+        System.out.println(hours);
+        
+        minutes = minutes % 59;
+        hours = hours % 17;
+        hoursParked = hours;
+        double min = minutes / 60.0;
+        hoursParked += min;
+        System.out.println(hoursParked);
+        return hoursParked;
     }
     
     private double checkHoursParked(int carId){
