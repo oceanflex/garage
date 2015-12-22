@@ -83,10 +83,12 @@ public class TicketGiver extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void takeTixActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_takeTixActionPerformed
-        StringSelection selection = new StringSelection(tixNo.getText());
-        Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
-        clipboard.setContents(selection, selection);
-        tixNo.setText("");
+        if(tixNo.getText().length()!=0){
+            StringSelection selection = new StringSelection(tixNo.getText());
+            Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+            clipboard.setContents(selection, selection);
+            tixNo.setText("");
+        }
     }//GEN-LAST:event_takeTixActionPerformed
 
     private void makeTixActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_makeTixActionPerformed
