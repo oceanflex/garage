@@ -1,4 +1,4 @@
-Hours Parked: 971.5833333333333
-Dollars Collected: $153.5
+Hours Parked: 1087.35
+Dollars Collected: $220.5
 Vehicles in Lot: 0
-Vehicles that Exited: 28
+Vehicles that Exited: 40

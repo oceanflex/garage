@@ -10,7 +10,7 @@ import java.util.Date;
  * @author Zachary
  */
 public class ParkingLot implements CarDataAccess{
-    private ArrayList<Ticket> tickets;
+    private ArrayList<Ticket> tickets;//to satisfy requirements, I use arraylist instead of resizing arry by hand
 
     public ParkingLot() {
         this.tickets = new ArrayList<>();

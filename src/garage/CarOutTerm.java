@@ -84,14 +84,12 @@ public class CarOutTerm {
         double hoursParked;
         long minutes = ChronoUnit.MICROS.between(dtIn, dtOut);
         long hours = ChronoUnit.MILLIS.between(dtIn,dtOut);
-        System.out.println(hours);
         
         minutes = minutes % 59;
         hours = hours % 17;
         hoursParked = hours;
         double min = minutes / 60.0;
         hoursParked += min;
-        System.out.println(hoursParked);
         return hoursParked;
     }
     
@@ -101,13 +99,11 @@ public class CarOutTerm {
         double hoursParked;
         long minutes = ChronoUnit.MINUTES.between(dtIn, dtOut);
         long hours = ChronoUnit.HOURS.between(dtIn,dtOut);
-        System.out.println(hours);
         
         minutes = minutes % 60;
         hoursParked = hours;
         double min = minutes / 60.0;
         hoursParked += min;
-        System.out.println(hoursParked);
         return hoursParked;
     }
     /**
