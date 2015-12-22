@@ -4,7 +4,13 @@ import garage.CarInTerm;
 import garage.CarOutTerm;
 import java.awt.Toolkit;
 import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.StringSelection;
+import java.awt.datatransfer.Transferable;
+import java.awt.datatransfer.UnsupportedFlavorException;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -85,9 +91,19 @@ public class TicketTaker extends javax.swing.JFrame {
     }//GEN-LAST:event_releaseCarActionPerformed
 
     private void copyTicketActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_copyTicketActionPerformed
-        //StringSelection selection = new StringSelection("");
-        //Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
-        //clipboard.getContents(selection);
+        String fromClip = "";
+        Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+        Transferable clip = clipboard.getContents(fromClip);
+        if(clip!=null&&clip.isDataFlavorSupported(DataFlavor.stringFlavor)){
+            try {
+                fromClip = (String)clip.getTransferData(DataFlavor.stringFlavor);
+            } catch (UnsupportedFlavorException ex) {
+                Logger.getLogger(TicketTaker.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                Logger.getLogger(TicketTaker.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        carId.setText(fromClip);
     }//GEN-LAST:event_copyTicketActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
