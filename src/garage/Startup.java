@@ -43,6 +43,8 @@ public class Startup {
                 new TicketTaker(inTerm,outTerm).setVisible(true);
             }
         });
+        //cust = new CustGuiReceipt();
+        //outTerm = new CarOutTerm(lot,own,cust,fee);
         
         inTerm.newCar(); //will make a new car entry with starting time of now
 //        inTerm.newCar(0.25);//will make a new entry with starting time of 15 minutes ago

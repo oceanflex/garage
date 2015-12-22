@@ -29,11 +29,9 @@ public class TicketTaker extends javax.swing.JFrame {
 
         carId = new javax.swing.JTextField();
         releaseCar = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        output = new javax.swing.JTextArea();
-        closeTransaction = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Exit");
 
         releaseCar.setText("check out");
         releaseCar.addActionListener(new java.awt.event.ActionListener() {
@@ -42,30 +40,16 @@ public class TicketTaker extends javax.swing.JFrame {
             }
         });
 
-        output.setColumns(20);
-        output.setRows(5);
-        jScrollPane1.setViewportView(output);
-
-        closeTransaction.setText("Pay Fee");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(carId, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(releaseCar)))
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(150, 150, 150)
-                .addComponent(closeTransaction)
-                .addContainerGap(159, Short.MAX_VALUE))
+                .addComponent(carId, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(releaseCar)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -74,10 +58,6 @@ public class TicketTaker extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(releaseCar)
                     .addComponent(carId, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(closeTransaction)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -85,15 +65,11 @@ public class TicketTaker extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void releaseCarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_releaseCarActionPerformed
-        // TODO add your handling code here:
+        out.releaseCar(Integer.parseInt(carId.getText()), true);
     }//GEN-LAST:event_releaseCarActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField carId;
-    private javax.swing.JButton closeTransaction;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea output;
     private javax.swing.JButton releaseCar;
     // End of variables declaration//GEN-END:variables
 }
