@@ -26,10 +26,12 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
+              <Component id="copyTicket" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="carId" min="-2" pref="73" max="-2" attributes="0"/>
-              <EmptySpace pref="105" max="32767" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="releaseCar" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -40,6 +42,7 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="carId" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="releaseCar" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="copyTicket" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -55,6 +58,14 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="releaseCarActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="copyTicket">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="give ticket"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="copyTicketActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

@@ -2,6 +2,9 @@ package guiIO;
 
 import garage.CarInTerm;
 import garage.CarOutTerm;
+import java.awt.Toolkit;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.StringSelection;
 
 /**
  *
@@ -29,6 +32,7 @@ public class TicketTaker extends javax.swing.JFrame {
 
         carId = new javax.swing.JTextField();
         releaseCar = new javax.swing.JButton();
+        copyTicket = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Exit");
@@ -40,16 +44,25 @@ public class TicketTaker extends javax.swing.JFrame {
             }
         });
 
+        copyTicket.setText("give ticket");
+        copyTicket.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                copyTicketActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(copyTicket)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(carId, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 105, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(releaseCar)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -57,7 +70,8 @@ public class TicketTaker extends javax.swing.JFrame {
                 .addGap(15, 15, 15)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(carId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(releaseCar))
+                    .addComponent(releaseCar)
+                    .addComponent(copyTicket))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -65,11 +79,20 @@ public class TicketTaker extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void releaseCarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_releaseCarActionPerformed
-        out.releaseCar(Integer.parseInt(carId.getText()), true);
+        if(carId.getText().length()<10&&carId.getText().matches("^\\d+$")){
+            out.releaseCar(Integer.parseInt(carId.getText()), true);
+        }
     }//GEN-LAST:event_releaseCarActionPerformed
+
+    private void copyTicketActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_copyTicketActionPerformed
+        //StringSelection selection = new StringSelection("");
+        //Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+        //clipboard.getContents(selection);
+    }//GEN-LAST:event_copyTicketActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField carId;
+    private javax.swing.JButton copyTicket;
     private javax.swing.JButton releaseCar;
     // End of variables declaration//GEN-END:variables
 }

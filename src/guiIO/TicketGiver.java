@@ -2,6 +2,9 @@ package guiIO;
 
 import garage.CarInTerm;
 import garage.CarOutTerm;
+import java.awt.Toolkit;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.StringSelection;
 
 /**
  *
@@ -80,6 +83,9 @@ public class TicketGiver extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void takeTixActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_takeTixActionPerformed
+        StringSelection selection = new StringSelection(tixNo.getText());
+        Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+        clipboard.setContents(selection, selection);
         tixNo.setText("");
     }//GEN-LAST:event_takeTixActionPerformed
 
