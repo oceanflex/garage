@@ -52,8 +52,25 @@ public class CarOutTerm {
      */
     public void releaseCar(int carId){
         //needs validation, carId needs to be >1000, and preferably exist
-        double hoursParked = this.checkHoursParked(carId);
-        this.releaseCar(hoursParked, carId);
+        if(carId >= 1000&&carId <= lot.highCarId()){
+            double hoursParked = this.checkHoursParked(carId);
+            this.releaseCar(hoursParked, carId);
+        }
+    }
+    
+    /**
+     * this method will output to both the customer and owner, all details about
+     * the transaction, based on the carId's ticket in the database.
+     * this version of releaseCar is for testing only
+     * @param carId input carId to get information to display
+     * @param isTest set to true for method to work. 
+     */
+    public void releaseCar(int carId,boolean isTest){
+        //needs validation, carId needs to be >1000, and preferably exist
+        if(isTest && carId >= 1000 && carId <= lot.highCarId()){
+            double hoursParked = this.checkHoursParked(carId);
+            this.releaseCar(hoursParked, carId);
+        }
     }
     
     private double checkHoursParked(int carId){

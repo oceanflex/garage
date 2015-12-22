@@ -50,6 +50,7 @@ public class ParkingLot implements CarDataAccess{
      * This is to help with retrieving the last car to enter, or to make new tickets have a different ID form old ones
      * @return the highest carID on all tickets, or 9 if there are no tickets
      */
+    @Override
     public int highCarId(){
         int back = 9;
         for(Ticket c: this.tickets){

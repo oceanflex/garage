@@ -10,4 +10,5 @@ import java.util.Date;
 public interface CarDataAccess {
     public void addCar(int carId, Date timeIn);
     public Date getTimeIn(int carId);
+    public int highCarId();
 }
