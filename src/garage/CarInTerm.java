@@ -40,6 +40,10 @@ public class CarInTerm {
         lot.addCar(newCarId, backDateTime);
     }
     
+    public int getLatestId(){
+        return this.carId;
+    }
+    
 //    private Date backDate(double hoursPreParked){
 //        Date backDate;
 //        

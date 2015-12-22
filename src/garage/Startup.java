@@ -1,5 +1,7 @@
 package garage;
 
+import guiIO.TicketGiver;
+import guiIO.TicketTaker;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -34,6 +36,14 @@ public class Startup {
 //        System.out.println(fee.getFee(3.1));
         
         CarOutTerm outTerm = new CarOutTerm(lot,own,cust,fee);
+        
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new TicketGiver(inTerm,outTerm).setVisible(true);
+                new TicketTaker(inTerm,outTerm).setVisible(true);
+            }
+        });
+        
         inTerm.newCar(); //will make a new car entry with starting time of now
 //        inTerm.newCar(0.25);//will make a new entry with starting time of 15 minutes ago
 //        inTerm.newCar(3.1);
